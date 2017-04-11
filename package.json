@@ -1,0 +1,21 @@
+{
+  "name": "electron-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/app.bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "watch": "webpack --progress --colors --watch"
+  },
+  "author": "takeo asai",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.6.2",
+    "file-loader": "^0.11.1",
+    "webpack": "^2.3.3"
+  },
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}

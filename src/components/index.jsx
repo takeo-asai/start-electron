@@ -11,6 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 import Sidebar from './sidebar';
+import Stepper from './stepper';
 
 import {
     BrowserRouter as Router,
@@ -36,7 +37,7 @@ render(
             <div>
                 <Link to="/about">About</Link>
                 <Link to="/">Home</Link>
-                <Sidebar />
+                <Stepper />
                 <FloatingActionButton style={{ marginRight: 20, }}>
                     <ContentAdd />
                 </FloatingActionButton>

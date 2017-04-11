@@ -6,13 +6,8 @@ import {
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 
-/**
- * Horizontal steppers are ideal when the contents of one step depend on an earlier step.
- * Avoid using long step names in horizontal steppers.
- *
- * Linear steppers require users to complete one step in order to move on to the next.
- */
 class HorizontalLinearStepper extends React.Component {
 
     constructor() {
@@ -23,12 +18,11 @@ class HorizontalLinearStepper extends React.Component {
         };
     }
 
-
     handleNext() {
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
-            finished: stepIndex >= 2,
+            finished: stepIndex >= 1,
         });
     };
 
@@ -42,11 +36,12 @@ class HorizontalLinearStepper extends React.Component {
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
-                return 'Select campaign settings...';
+                return <div><TextField
+      hintText="Hint Text"
+      errorText="The error text can be as long as you want, it will wrap."
+    />登録</div>;
             case 1:
-                return 'What is an ad group anyways?';
-            case 2:
-                return 'This is the bit I really care about!';
+                return <div>確認</div>;
             default:
                 return 'You\'re a long way from home sonny jim!';
         }
@@ -57,49 +52,29 @@ class HorizontalLinearStepper extends React.Component {
         const contentStyle = { margin: '0 16px' };
 
         return (
-            <div style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
+            <div style={{ width: '100%', maxWidth: 500, margin: 'auto' }}>
                 <Stepper activeStep={stepIndex}>
-                    <Step>
-                        <StepLabel>Select campaign settings</StepLabel>
-                    </Step>
-                    <Step>
-                        <StepLabel>Create an ad group</StepLabel>
-                    </Step>
-                    <Step>
-                        <StepLabel>Create an ad</StepLabel>
-                    </Step>
+                    <Step><StepLabel>登録</StepLabel></Step>
+                    <Step><StepLabel>確認</StepLabel></Step>
                 </Stepper>
                 <div style={contentStyle}>
-                    {finished ? (
-                        <p>
-                            <a
-                                href="#"
-                                onClick={(event) => {
-                                    event.preventDefault();
-                                    this.setState({ stepIndex: 0, finished: false });
-                                }}
-                            >
-                                Click here
-              </a> to reset the example.
-            </p>
-                    ) : (
-                            <div>
-                                <p>{this.getStepContent(stepIndex)}</p>
-                                <div style={{ marginTop: 12 }}>
-                                    <FlatButton
-                                        label="Back"
-                                        disabled={stepIndex === 0}
-                                        onTouchTap={() => this.handlePrev()}
-                                        style={{ marginRight: 12 }}
-                                    />
-                                    <RaisedButton
-                                        label={stepIndex === 2 ? 'Finish' : 'Next'}
-                                        primary={true}
-                                        onTouchTap={() => this.handleNext()}
-                                    />
-                                </div>
-                            </div>
-                        )}
+                    {finished ?
+                        <p>登録が完了しました</p>
+                        :
+                        <div>
+                            <p>{this.getStepContent(stepIndex)}</p>
+                            <FlatButton
+                                label="Back"
+                                disabled={stepIndex === 0}
+                                onTouchTap={() => this.handlePrev()}
+                            />
+                            <RaisedButton
+                                label={stepIndex === 1 ? 'Finish' : 'Next'}
+                                primary={true}
+                                onTouchTap={() => this.handleNext()}
+                            />
+                        </div>
+                    }
                 </div>
             </div>
         );

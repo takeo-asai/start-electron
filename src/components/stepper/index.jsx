@@ -15,10 +15,11 @@ class HorizontalLinearStepper extends React.Component {
         this.state = {
             finished: false,
             stepIndex: 0,
+            text1: "",
         };
     }
 
-    handleNext() {
+    next() {
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
@@ -26,7 +27,7 @@ class HorizontalLinearStepper extends React.Component {
         });
     };
 
-    handlePrev() {
+    prev() {
         const { stepIndex } = this.state;
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
@@ -36,10 +37,15 @@ class HorizontalLinearStepper extends React.Component {
     getStepContent(stepIndex) {
         switch (stepIndex) {
             case 0:
-                return <div><TextField
-      hintText="Hint Text"
-      errorText="The error text can be as long as you want, it will wrap."
-    />登録</div>;
+                return <div>
+                    登録: <TextField
+                        hintText="Hint Text"
+                        errorText={this.state.text1 !== "" ? null : "Error"}
+                        value={this.state.text1}
+                        onChange={(e) => this.setState({ text1: e.target.value })}
+                    />
+
+                </div>;
             case 1:
                 return <div>確認</div>;
             default:
@@ -62,16 +68,16 @@ class HorizontalLinearStepper extends React.Component {
                         <p>登録が完了しました</p>
                         :
                         <div>
-                            <p>{this.getStepContent(stepIndex)}</p>
+                            {this.getStepContent(stepIndex)}
                             <FlatButton
                                 label="Back"
                                 disabled={stepIndex === 0}
-                                onTouchTap={() => this.handlePrev()}
+                                onTouchTap={() => this.prev()}
                             />
                             <RaisedButton
                                 label={stepIndex === 1 ? 'Finish' : 'Next'}
                                 primary={true}
-                                onTouchTap={() => this.handleNext()}
+                                onTouchTap={() => this.next()}
                             />
                         </div>
                     }

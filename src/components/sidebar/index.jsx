@@ -7,11 +7,12 @@ import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import Drawer from 'material-ui/Drawer';
+import { Link } from 'react-router-dom'
 
 const Sidebar = () => (
-    <Drawer open={true}>
+    <div>
         <List>
-            <ListItem primaryText="Inbox" leftIcon={<ContentInbox />} />
+            <Link to="/about"><ListItem primaryText="Inbox" leftIcon={<ContentInbox />} /></Link>
             <ListItem primaryText="Starred" leftIcon={<ActionGrade />} />
             <ListItem primaryText="Sent mail" leftIcon={<ContentSend />} />
             <ListItem primaryText="Drafts" leftIcon={<ContentDrafts />} />
@@ -24,7 +25,7 @@ const Sidebar = () => (
             <ListItem primaryText="Spam" rightIcon={<ActionInfo />} />
             <ListItem primaryText="Follow up" rightIcon={<ActionInfo />} />
         </List>
-    </Drawer>
+    </div>
 );
 
 export default Sidebar;

@@ -12,6 +12,7 @@ injectTapEventPlugin();
 
 import Sidebar from './sidebar';
 import Stepper from './stepper';
+import About from './about';
 
 import {
     BrowserRouter as Router,
@@ -25,18 +26,13 @@ const Home = () => (
     </div>
 )
 
-const About = () => (
-    <div>
-        <h2>About</h2>
-    </div>
-)
-
 render(
     <Router>
         <MuiThemeProvider>
             <div>
                 <Link to="/about">About</Link>
                 <Link to="/">Home</Link>
+                <Sidebar />
                 <Stepper />
                 <FloatingActionButton style={{ marginRight: 20, }}>
                     <ContentAdd />

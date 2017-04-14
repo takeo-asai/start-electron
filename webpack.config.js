@@ -23,6 +23,7 @@ module.exports = {
         loader: "file-loader?name=[name].[ext]"
       },
       { test: /\.jsx?$/, exclude: /node_ modules/, loader: "babel-loader" },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader'], include: path.resolve(__dirname, './src') },
     ]
   },
 };

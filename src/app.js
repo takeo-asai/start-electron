@@ -7,7 +7,10 @@ function createWindow() {
     win = new BrowserWindow({ width: 800, height: 600,
 //        transparent: true,
 //        frame: false,
-});
+            webPreferences: {
+                experimentalFeatures: true,
+            },
+    });
     win.loadURL(`file://${__dirname}/index.html`);
     win.on("closed", () => {
         win = null;

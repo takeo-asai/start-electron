@@ -26,20 +26,25 @@ const Home = () => (
     </div>
 )
 
+import styles from './style.css';
+
 render(
     <Router>
         <MuiThemeProvider>
-            <div>
-                <Link to="/about">About</Link>
-                <Link to="/">Home</Link>
-                <Sidebar />
-                <Stepper />
-                <FloatingActionButton style={{ marginRight: 20, }}>
-                    <ContentAdd />
-                </FloatingActionButton>
-
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
+            <div className="root">
+                <div className="sidebar">
+                    <Sidebar />
+                </div>
+                <div className="main">
+                    <Link to="/about">About</Link>
+                    <Link to="/">Home</Link>
+                    <FloatingActionButton style={{ marginRight: 20, }}>
+                        <ContentAdd />
+                    </FloatingActionButton>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/about" component={About} />
+                    <Stepper />
+                </div>
             </div>
         </MuiThemeProvider>
     </Router>,

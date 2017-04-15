@@ -19,6 +19,7 @@ import Sidebar from './sidebar';
 import Stepper from './stepper';
 import About from './about';
 import Home from './home';
+import CreateApp from './CreateApp';
 import styles from './style.css';
 
 render(

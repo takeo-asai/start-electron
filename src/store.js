@@ -12,6 +12,6 @@ export default function configureStore() {
             sagaMiddleware, //createLogger()
         )
     );
-    //sagaMiddleware.run(rootSaga);
+    sagaMiddleware.run(rootSaga);
     return store;
 };

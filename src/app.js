@@ -1,3 +1,5 @@
+// @flow
+
 import { app, BrowserWindow } from 'electron';
 
 import './index.html';

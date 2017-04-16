@@ -19,37 +19,36 @@ class HorizontalLinearStepper extends React.Component {
         };
     }
 
+    getStepContent(stepIndex) {
+        switch (stepIndex) {
+        case 0:
+            return (<div>
+                    登録: <TextField
+                        hintText="Hint Text"
+                        errorText={this.state.text1 !== '' ? null : 'Error'}
+                        value={this.state.text1}
+                        onChange={e => this.setState({ text1: e.target.value })}
+                    />
+            </div>);
+        case 1:
+            return <div>確認</div>;
+        default:
+            return 'You\'re a long way from home sonny jim!';
+        }
+    }
+
     next() {
         const { stepIndex } = this.state;
         this.setState({
             stepIndex: stepIndex + 1,
             finished: stepIndex >= 1,
         });
-    };
+    }
 
     prev() {
         const { stepIndex } = this.state;
         if (stepIndex > 0) {
             this.setState({ stepIndex: stepIndex - 1 });
-        }
-    };
-
-    getStepContent(stepIndex) {
-        switch (stepIndex) {
-            case 0:
-                return <div>
-                    登録: <TextField
-                        hintText="Hint Text"
-                        errorText={this.state.text1 !== "" ? null : "Error"}
-                        value={this.state.text1}
-                        onChange={(e) => this.setState({ text1: e.target.value })}
-                    />
-
-                </div>;
-            case 1:
-                return <div>確認</div>;
-            default:
-                return 'You\'re a long way from home sonny jim!';
         }
     }
 

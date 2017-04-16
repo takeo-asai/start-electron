@@ -1,7 +1,8 @@
 import { call, put, fork, take } from 'redux-saga/effects';
+import 'babel-polyfill';
+
 import * as Actions from './actions';
 import * as API from './api';
-import "babel-polyfill";
 
 function* promiseTestHandler() {
     while (true) {

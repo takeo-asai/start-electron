@@ -6,8 +6,7 @@ import ContentSend from 'material-ui/svg-icons/content/send';
 import ContentDrafts from 'material-ui/svg-icons/content/drafts';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
-import Drawer from 'material-ui/Drawer';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => (
     <div>

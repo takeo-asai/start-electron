@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Step,
     Stepper,
-    StepLabel,
+    StepLabel
 } from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -15,7 +15,7 @@ class HorizontalLinearStepper extends React.Component {
         this.state = {
             finished: false,
             stepIndex: 0,
-            text1: "",
+            text1: ''
         };
     }
 

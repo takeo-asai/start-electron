@@ -16,6 +16,21 @@ function* promiseTestHandler() {
     }
 }
 
+function* createAppHandler() {
+    while (true) {
+        const action = yield take(Actions.CREATE_APP);
+        const { baseUrl } = action;
+        const { error, url, clientId, clientSecret } = yield call(API.createApp, baseUrl);
+        if (!error) {
+            yield put(Actions.createAppDone(url, clientId, clientSecret));
+        } else {
+            yield put(Actions.getAuth(error));
+        }
+    }
+}
+
 export default function* rootSaga() {
+    yield fork(createAppHandler);
+
     yield fork(promiseTestHandler);
 }

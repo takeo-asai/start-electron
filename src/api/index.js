@@ -1,5 +1,7 @@
 import Mastodon from 'mastodon-api';
 
+const shell = require('electron').shell;
+
 export function test() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -9,11 +11,11 @@ export function test() {
 }
 
 export function createApp() {
-    const baseUrl = 'https://pawoo.net/';
+    const baseUrl = 'https://pawoo.net';
     let clientId;
     let clientSecret;
 
-    Mastodon.createOAuthApp(baseUrl + '/api/v1/apps', 'testapp', 'read write follow')
+    return Mastodon.createOAuthApp(`${baseUrl}/api/v1/apps`, 'testapp', 'read write follow')
         .catch(err => console.error(err))
         .then((res) => {
             clientId = res.client_id;
@@ -22,17 +24,15 @@ export function createApp() {
             return Mastodon.getAuthorizationUrl(clientId, clientSecret, baseUrl);
         })
     .then((url) => {
-        console.log('This is the authorization URL. Open it in your browser and authorize with your account!');
-        console.log(url);
-        return new Promise((resolve) => {
-            rl.question('Please enter the code from the website: ', code => {
-                resolve(code)
-                rl.close()
-            })
-        })
-    })
-    .then(code => Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl))
-    .catch(err => console.error(err))
-    .then(accessToken => {});
+        shell.openExternal(url);
+//        console.log('api console');
+//        console.warn(url, clientId, clientSecret);
+        return {
+            url,
+            clientId,
+            clientSecret
+        };
+    });
+    // .then(code => Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl));
 }
 

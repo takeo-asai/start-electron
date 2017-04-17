@@ -1,10 +1,10 @@
-export const TEST = 'TEST';
 export const PROMISETEST = 'PROMISETEST';
 
-export function test(value) {
+export const GET_AUTH = 'GET_AUTH';
+export function getAuth(baseUrl) {
     return {
-        type: TEST,
-        value: value
+        type: GET_AUTH,
+        baseUrl
     };
 }
 

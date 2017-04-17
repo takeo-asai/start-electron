@@ -9,9 +9,9 @@ function* promiseTestHandler() {
         const action = yield take(Actions.PROMISETEST);
         const { payload, error } = yield call(API.test, 100);
         if (payload && !error) {
-            yield put(Actions.test(payload));
+            yield put(Actions.getAuth(payload));
         } else {
-            yield put(Actions.test(error));
+            yield put(Actions.getAuth(error));
         }
     }
 }

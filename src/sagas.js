@@ -17,6 +17,22 @@ function* createAppHandler() {
     }
 }
 
+function* getTokenHandler() {
+    while (true) {
+        const action = yield take(Actions.GET_TOKEN);
+        const { baseUrl, clientId, clientSecret, code } = action;
+        const mstdn = yield call(API.getToken, baseUrl, clientId, clientSecret, code);
+        console.log(mstdn);
+        yield put(Actions.getAuth(clientId));
+        /* if (!error) {
+            yield put(Actions.getAuth(clientId));
+        } else {
+            yield put(Actions.getAuth(error));
+        }*/
+    }
+}
+
 export default function* rootSaga() {
     yield fork(createAppHandler);
+    yield fork(getTokenHandler);
 }

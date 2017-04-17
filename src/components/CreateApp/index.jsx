@@ -19,6 +19,7 @@ class CreateApp extends React.Component {
           <div>url: {this.props.baseUrl}</div>
           <div>id: {this.props.clientId}</div>
           <div>secret: {this.props.clientSecret}</div>
+          <div>code: {this.props.code}</div>
           <button onClick={() => this.test8()}>Test</button>
           <button onClick={() => this.test9()}>Promise Test</button>
         </div>);
@@ -30,14 +31,16 @@ CreateApp.propTypes = {
     createApp: PropTypes.func.isRequired,
     baseUrl: PropTypes.string.isRequired,
     clientId: PropTypes.string.isRequired,
-    clientSecret: PropTypes.string.isRequired
+    clientSecret: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
     return {
         baseUrl: state.baseUrl,
         clientId: state.clientId,
-        clientSecret: state.clientSecret
+        clientSecret: state.clientSecret,
+        code: state.clientSecret
     };
 }
 function mapDispatchToProps(dispatch) {

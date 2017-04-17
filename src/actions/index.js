@@ -15,6 +15,17 @@ export function createAppDone(clientId, clientSecret) {
     };
 }
 
+export const GET_TOKEN = 'GET_TOKEN';
+export function getToken(baseUrl, clientId, clientSecret, code) {
+    return {
+        type: GET_TOKEN,
+        baseUrl,
+        clientId,
+        clientSecret,
+        code
+    };
+}
+
 export const GET_AUTH = 'GET_AUTH';
 export function getAuth(baseUrl) {
     return {

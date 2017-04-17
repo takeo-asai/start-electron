@@ -32,6 +32,8 @@ export function createApp() {
             clientSecret
         };
     });
-    // .then(code => Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl));
 }
 
+export function getToken(baseUrl, clientId, clientSecret, code) {
+    return Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl);
+}

@@ -28,7 +28,6 @@ export function createApp() {
 //        console.log('api console');
 //        console.warn(url, clientId, clientSecret);
         return {
-            url,
             clientId,
             clientSecret
         };

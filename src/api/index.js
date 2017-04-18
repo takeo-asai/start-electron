@@ -2,16 +2,7 @@ import Mastodon from 'mastodon-api';
 
 const shell = require('electron').shell;
 
-export function test() {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(999);
-        }, 5000);
-    });
-}
-
-export function createApp() {
-    const baseUrl = 'https://pawoo.net';
+export function createApp(baseUrl) {
     let clientId;
     let clientSecret;
 

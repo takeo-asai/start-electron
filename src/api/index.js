@@ -26,5 +26,10 @@ export function createApp(baseUrl) {
 }
 
 export function getToken(baseUrl, clientId, clientSecret, code) {
-    return Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl);
+    return Mastodon.getAccessToken(clientId, clientSecret, code, baseUrl)
+        .then((token) => {
+            return {
+                token
+            };
+        });
 }

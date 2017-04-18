@@ -26,6 +26,14 @@ export function getToken(baseUrl, clientId, clientSecret, code) {
     };
 }
 
+export const GET_TOKEN_DONE = 'GET_TOKEN_DONE';
+export function getTokenDone(token) {
+    return {
+        type: GET_TOKEN_DONE,
+        token
+    };
+}
+
 export const GET_AUTH = 'GET_AUTH';
 export function getAuth(baseUrl) {
     return {

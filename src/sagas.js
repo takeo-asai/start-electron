@@ -21,14 +21,14 @@ function* getTokenHandler() {
     while (true) {
         const action = yield take(Actions.GET_TOKEN);
         const { baseUrl, clientId, clientSecret, code } = action;
-        const mstdn = yield call(API.getToken, baseUrl, clientId, clientSecret, code);
-        console.log(mstdn);
-        yield put(Actions.getAuth(clientId));
-        /* if (!error) {
-            yield put(Actions.getAuth(clientId));
+        const { token, error } = yield call(API.getToken, baseUrl, clientId, clientSecret, code);
+        console.log("token, error");
+        console.log(token, error);
+        if (!error) {
+            yield put(Actions.getTokenDone(token));
         } else {
-            yield put(Actions.getAuth(error));
-        }*/
+            yield put(Actions.getTokenDone(error));
+        }
     }
 }
 

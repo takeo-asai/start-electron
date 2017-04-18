@@ -27,10 +27,10 @@ class CreateApp extends React.Component {
           <h2>CreateApp</h2>
           <div>id: {this.props.clientId}</div>
           <div>secret: {this.props.clientSecret}</div>
-          <div>code: {this.state.code}</div>
+          <div>token: {this.props.token}</div>
           <div><input type="text" onChange={e => this.changeCode(e)} /></div>
-          <button onClick={() => this.getToken()}>Get Token</button>
-          <button onClick={() => this.createApp()}>Create App</button>
+          <button type="button" disabled={this.props.clientId === ''} onClick={() => this.getToken()}>Get Token</button>
+          <button type="button" onClick={() => this.createApp()}>Create App</button>
         </div>);
     }
 }
@@ -40,14 +40,16 @@ CreateApp.propTypes = {
     createApp: PropTypes.func.isRequired,
     clientId: PropTypes.string.isRequired,
     clientSecret: PropTypes.string.isRequired,
-    code: PropTypes.string.isRequired
+    code: PropTypes.string.isRequired,
+    token: PropTypes.string.isRequired
 };
 
 function mapStateToProps(state) {
     return {
         clientId: state.clientId,
         clientSecret: state.clientSecret,
-        code: state.clientSecret
+        code: state.clientSecret,
+        token: state.token
     };
 }
 function mapDispatchToProps(dispatch) {

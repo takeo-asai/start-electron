@@ -33,11 +33,3 @@ export function getTokenDone(token) {
         token
     };
 }
-
-export const GET_AUTH = 'GET_AUTH';
-export function getAuth(baseUrl) {
-    return {
-        type: GET_AUTH,
-        baseUrl
-    };
-}

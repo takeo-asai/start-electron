@@ -3,11 +3,11 @@
 ## Start
 
 ```
-$ npm start
+$ yarn start
 ```
 
 ## Build
 
 ```
-$ npm run watch
+$ yarn watch
 ```

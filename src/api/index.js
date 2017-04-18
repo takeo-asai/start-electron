@@ -31,5 +31,9 @@ export function getToken(baseUrl, clientId, clientSecret, code) {
             return {
                 token
             };
+        }).catch((error) => {
+            return {
+                error
+            };
         });
 }

@@ -12,7 +12,8 @@ function* createAppHandler() {
         if (!error) {
             yield put(Actions.createAppDone(clientId, clientSecret));
         } else {
-            yield put(Actions.getAuth(error));
+            // TODO: error handling
+            yield put(Actions.createAppDone(error, clientId));
         }
     }
 }
@@ -27,6 +28,7 @@ function* getTokenHandler() {
         if (!error) {
             yield put(Actions.getTokenDone(token));
         } else {
+            // TODO: error handling
             yield put(Actions.getTokenDone(error));
         }
     }

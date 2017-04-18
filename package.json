@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "watch": "webpack --progress --colors --watch"
+    "watch": "webpack --progress --colors --watch",
+    "package-mac": "webpack && electron-packager dist \"Electron Chat\" pratform=darwin --arch=all --out=release"
   },
   "author": "takeo asai",
   "license": "MIT",
